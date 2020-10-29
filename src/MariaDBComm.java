@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class MariaDBComm {
     static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-    static String url = "jdbc:mariadb://192.168.239.24:3306/logins";
+    static String url = "jdbc:mariadb://192.168.239.2#:3306/logins";
     private static Connection conn = null;
     private static Statement statement = null;
     private PreparedStatement prep = null;
@@ -15,8 +15,8 @@ public class MariaDBComm {
 
             //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
             String user, pass;
-            user = "william";
-            pass = "budgieboi";
+            user = "user";
+            pass = "password";
             // url="jdbc:mysql://localhost:3306/phoenixpoint?serverTimezone=Europe/Amsterdam&amp";
 
             // Skal man fx. bruge 127.0.0.1 til en remote maskine?
@@ -29,6 +29,8 @@ public class MariaDBComm {
             if (conn != null) {
 
                 System.out.println("Im in");
+            } else {
+                System.out.println("connection not made");
             }
 
             //find out which columns are in current table:
@@ -48,7 +50,7 @@ public class MariaDBComm {
 
 
             //db.getHomeData();
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
